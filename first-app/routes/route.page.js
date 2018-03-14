@@ -16,4 +16,11 @@ router.get('/posts/create',function(req, res, next) {
   res.render('create');
 });
 
+router.get('/posts/show', function (req, res, next) {
+  var id = req.query.id;
+
+  PostModel.findOne({_id: id}, function (err, post) {
+    res.render('show',{post});
+  })
+})
 module.exports = router;
